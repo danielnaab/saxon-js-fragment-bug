@@ -1,0 +1,16 @@
+{
+  "name": "saxon-js-base-uri",
+  "version": "1.0.0",
+  "description": "saxon-js bug reproduction",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:sef": "xslt3 -xsl:test.xsl -export:test.sef.json -relocate:on -nogo",
+    "start": "serve ."
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "serve": "^14.1.2",
+    "xslt3": "^2.5.0"
+  }
+}

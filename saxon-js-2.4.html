@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>With saxon-js 2.4</title>
+    <script src="SaxonJS2-2.4.rt.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    SaxonJS.getResource({
+      text: '<?xml version="1.0" encoding="UTF-8"?>\n<mock></mock>',
+      type: 'xml',
+    }).then((resource) => {
+      return SaxonJS.transform(
+        {
+          stylesheetLocation: 'test.sef.json',
+          destination: 'serialized',
+          sourceNode: resource
+        },
+        'async',
+      );
+    }).then(result => {
+      console.log(result.principalResult);
+      document.getElementById('app').innerHTML = result.principalResult;
+    }).catch(error => {
+      console.error(error);
+      document.getElementById('app').innerHTML = `Error: ${error}`;
+    });
+  </script>
+</html>
